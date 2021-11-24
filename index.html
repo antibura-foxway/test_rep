@@ -30,10 +30,10 @@
   <p>Max Price</p>
 </div>
 <div class="second">
-  <p><input type="text" name = "buybox" value="0"></p>
-  <p><input type="text" name = "target" value="150"></p>
-   <p><input type="text" name = "min" value="100"></p>
-   <p><input type="text" name = "max" value="0"></p>
+  <p><input type="text" name = "buybox" value=""></p>
+  <p><input type="text" name = "target" value=""></p>
+   <p><input type="text" name = "min" value=""></p>
+   <p><input type="text" name = "max" value=""></p>
    <p><input type="submit" value="Apply" onclick="priceLogic()"></p>
 </div>
   
@@ -44,14 +44,18 @@
 function priceLogic() {
 let form = document.forms.prices; // <form name="my"> element
 
-// buyBox = 0
-let buyBox = form.elements.buybox.value;
-// target = 150
-let target = form.elements.target.value;
-// min = 110
-let min = form.elements.min.value;
-// max = 140
-let max = form.elements.max.value;
+let buyBox = Number(form.elements.buybox.value);
+let target = Number(form.elements.target.value);
+let min = Number(form.elements.min.value);
+let max = Number(form.elements.max.value);
+
+
+/*
+buyBox = 90;
+target = 140;
+min = 100;
+max = 0;
+*/
 
 if (buyBox == 0 || buyBox == target) {
     price = target;
@@ -62,7 +66,7 @@ if (buyBox == 0 || buyBox == target) {
 } else if (buyBox > target) {
         price = buyBox;
         priceName = 'BuyBox';
-        //alert(price);
+        alert(typeof price);
 } else {
     price = target;
     priceName = 'Target';
@@ -83,7 +87,7 @@ if (max != 0 && max < price) {
     price = price;
     priceName = priceName;
 }
-
+    
 // price = str(price)
 
 // alert('The system will use ' + priceName + ' as the price.')
