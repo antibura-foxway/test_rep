@@ -1,0 +1,113 @@
+<html>
+
+<head>
+	<style>
+   p { 
+    font-size: 12pt; 
+    margin: 4px;
+    font-family: Roboto, sans-serif; 
+    color: #333366; 
+   }
+   .first {
+   	width: 150px;
+   	float:  left;
+   }	
+   h1 {
+   	font-size:  16pt;
+   	font-weight: 400;
+   	font-family: Roboto, sans-serif; 
+   }
+  </style>
+</head>
+
+<body>
+<h1>Input Data</h1>
+<form name = "prices" onsubmit="return false">
+	<div class="first">
+  <p>BuyBox Price</p>
+  <p>Target Price</p>
+  <p>Min Price</p>
+  <p>Max Price</p>
+</div>
+<div class="second">
+  <p><input type="text" name = "buybox" value="0"></p>
+  <p><input type="text" name = "target" value="150"></p>
+   <p><input type="text" name = "min" value="100"></p>
+   <p><input type="text" name = "max" value="0"></p>
+   <p><input type="submit" value="Apply" onclick="priceLogic()"></p>
+</div>
+  
+</form>
+
+<script language="JavaScript">
+
+function priceLogic() {
+let form = document.forms.prices; // <form name="my"> element
+
+// buyBox = 0
+let buyBox = form.elements.buybox.value;
+// target = 150
+let target = form.elements.target.value;
+// min = 110
+let min = form.elements.min.value;
+// max = 140
+let max = form.elements.max.value;
+
+if (buyBox == 0 || buyBox == target) {
+    price = target;
+    priceName = 'Target';
+} else if (buyBox < target) {
+    if (min != 0 && buyBox >= min) {
+        price = buyBox;
+        priceName = 'BuyBox';
+    } else {
+        price = target;
+        priceName = 'Target';
+    }
+} else {
+    price = buyBox;
+    priceName = 'BuyBox';
+}
+    
+if (price < min) {
+    price = min;
+    priceName = 'Min';
+} else {
+    price = price;
+    priceName = priceName;
+}
+
+if (max != 0 && max < price) {
+    price = max;
+    priceName = 'Max';
+} else {
+    price = price;
+    priceName = priceName;
+}
+    
+// price = str(price)
+
+// alert('The system will use ' + priceName + ' as the price.')
+// alert('With value: '+ price)
+
+document.getElementById('resultName').value = priceName;
+document.getElementById('resultValue').value = price;
+
+}
+
+</script>
+
+<h1>Result</h1>
+<div class="first">
+<p>Selected price:</p>
+<p>Value:</p>
+</div>
+<div class="second">
+<p><input type="text" id="resultName"></p>
+<p><input type="text" id="resultValue"></p>
+</div>
+
+
+
+</body>
+</html>
