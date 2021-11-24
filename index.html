@@ -56,19 +56,18 @@ let max = form.elements.max.value;
 if (buyBox == 0 || buyBox == target) {
     price = target;
     priceName = 'Target';
-} else if (buyBox < target) {
-    if (min != 0 && buyBox >= min) {
+} else if (min != 0 && min <= buyBox && buyBox < target) {
         price = buyBox;
         priceName = 'BuyBox';
-    } else {
-        price = target;
-        priceName = 'Target';
-    }
+} else if (buyBox > target) {
+        price = buyBox;
+        priceName = 'BuyBox';
+        alert(price);
 } else {
-    price = buyBox;
-    priceName = 'BuyBox';
+    price = target;
+    priceName = 'Target';
 }
-    
+
 if (price < min) {
     price = min;
     priceName = 'Min';
@@ -84,7 +83,7 @@ if (max != 0 && max < price) {
     price = price;
     priceName = priceName;
 }
-    
+
 // price = str(price)
 
 // alert('The system will use ' + priceName + ' as the price.')
