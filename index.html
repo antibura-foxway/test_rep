@@ -57,6 +57,9 @@ min = 100;
 max = 0;
 */
 
+
+alert(buyBox+' '+target+' '+min+' '+max);
+
 if (buyBox == 0 || buyBox == target) {
     price = target;
     priceName = 'Target';
@@ -66,7 +69,6 @@ if (buyBox == 0 || buyBox == target) {
 } else if (buyBox > target) {
         price = buyBox;
         priceName = 'BuyBox';
-        alert(typeof price);
 } else {
     price = target;
     priceName = 'Target';
